@@ -115,6 +115,10 @@ const pokemons = {"Carapuce" : new Pokemon("Carapuce", 50, "water", null, [pisto
 ////////////////////    INTERFACE     ////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
+function test5() {
+    
+}
+
 function init() {
     document.getElementById("nom1").textContent = pokemon1.name;
     document.getElementById("nom2").textContent = pokemon2.name;
