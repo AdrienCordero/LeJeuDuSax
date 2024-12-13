@@ -168,6 +168,6 @@ function changePokemon(i) {
     else if (player == 1)
         alert(user1 + ", vous n'avez plus de pokemon");
     else
-        alert(user2 + ", vous n'avez plus de pokemon");*/
+        alert(user2 + ", vous n'avez plus de pokemon");
     refreshButtons();
 }
