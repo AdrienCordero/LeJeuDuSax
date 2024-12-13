@@ -15,7 +15,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-image: url('Images/pokemonWallpaper.jpg');
+            background-image: url('images/pokemonWallpaper.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -54,31 +54,11 @@
             gap: 10px;
             margin: 20px auto;
         }
-
-        .letter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            border: solid 1px black;
-            transition: background-color 0.3s;
-        }
-
-        .letter:hover,
-        .letter.active {
-            border: solid 1px whitesmoke;
-            color: white;
-        }
-
         .buttons {
             margin-top: 20px;
         }
 
-        .deleteBtn, .continueBtn {
+        .continueBtn {
             padding: 5px 10px;
             margin: 5px;
             width: fit-content;
@@ -89,15 +69,6 @@
             transition: background-color 0.3s;
             color: white;
         }
-
-        .deleteBtn {
-            background-color: #ff4d4d;
-        }
-
-        .deleteBtn:hover {
-            background-color: #cc0000;
-        }
-
         .continueBtn {
             background-color: #2100f6;
         }
@@ -105,7 +76,6 @@
         .continueBtn:hover {
             background-color: #230052;
         }
-
         .next-button {
             display: flex;
             align-items: center;
@@ -157,17 +127,7 @@
     const userName2 = document.getElementById('userName2');
 
     let currentUserName = 1;
-
-    letters.forEach(letter => {
-        letter.addEventListener('click', () => {
-            input.value += letter.textContent;
-        });
     });
-
-    deleteBtn.addEventListener('click', () => {
-        input.value = input.value.slice(0, -1);
-    });
-
     validateBtn.addEventListener('click', () => {
         if (currentUserName === 1) {
             userName1.textContent = input.value;
