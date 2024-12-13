@@ -19,21 +19,6 @@ const typeEffectiveness = {
     "fairy":   { "normal": 1, "fire": 1, "water": 1, "electric": 1, "grass": 1, "ice": 1, "fighting": 2, "poison": 1, "ground": 1, "flying": 1, "psychic": 1, "bug": 1, "rock": 1, "ghost": 1, "dragon": 2, "dark": 2, "steel": 0.5, "fairy": 1 }
 };
 
-let queryString = window.location.search;
-let params = new URLSearchParams(queryString);
-
-let user1 = params.get('user1');
-let user2 = params.get('user2');
-let pokemon1 = getPokemon(params.get('chr1'));
-let pokemon2 = getPokemon(params.get('chr4'));
-let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
-let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
-let attack1 = null;
-let attack2 = null;
-
-let player = 1;
-init();
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////    ATTACK     /////////////////////////////////////////////////////
@@ -97,6 +82,21 @@ class Pokemon {
         } 
     }
 }
+
+let queryString = window.location.search;
+let params = new URLSearchParams(queryString);
+
+let user1 = params.get('user1');
+let user2 = params.get('user2');
+let pokemon1 = getPokemon(params.get('chr1'));
+let pokemon2 = getPokemon(params.get('chr4'));
+let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
+let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
+let attack1 = null;
+let attack2 = null;
+
+let player = 1;
+init();
 
 const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
 
