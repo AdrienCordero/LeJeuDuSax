@@ -115,10 +115,6 @@ const pokemons = {"Carapuce" : new Pokemon("Carapuce", 50, "water", null, [pisto
 ////////////////////    INTERFACE     ////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-function test5() {
-    
-}
-
 function init() {
     document.getElementById("nom1").textContent = pokemon1.name;
     document.getElementById("nom2").textContent = pokemon2.name;
@@ -141,22 +137,6 @@ function refreshButtons() {
 }
 
 function changePokemon(i) {
-    /*if (player == 1 && pokemons1.length > 1) {
-        pokemons1.splice(0, 1);
-        document.getElementById("nom1").textContent = pokemons1[0].name;
-        document.getElementById("imagePokemon1").src = "Images/" + pokemons1[0].name + ".png";
-        player = 2;
-    }
-    else if (player == 2 && pokemons2.length > 1) {
-        pokemons2.splice(0, 1);
-        document.getElementById("nom2").textContent = pokemons2[0].name;
-        document.getElementById("imagePokemon2").src = "Images/" + pokemons2[0].name + ".png";
-        player = 1;
-    }
-    else if (player == 1)
-        alert(user1 + ", vous n'avez plus de pokemon");
-    else
-        alert(user2 + ", vous n'avez plus de pokemon");*/
     if (player == 1 && pokemons1.length > i) {
         pokemon1 = pokemons1[i];
         pokemons1.splice(i, 1);
@@ -169,7 +149,7 @@ function changePokemon(i) {
         pokemons2.splice(i, 1);
         document.getElementById("nom2").textContent = pokemon2.name;
         document.getElementById("imagePokemon2").src = "Images/" + pokemon2.name + ".png";
-        player = 2;
+        player = 1;
     }
     else if (player == 1)
         alert(user1 + ", vous n'avez plus de pokemon");
