@@ -28,11 +28,37 @@ let pokemon1 = getPokemon(params.get('chr1'));
 let pokemon2 = getPokemon(params.get('chr4'));
 let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
 let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
+let attack1 = null;
+let attack2 = null;
 
 let player = 1;
 init();
 
-function test4(){
+const pistolet_eau = new attack("pistolet à eau", "water", 0 , 1, 40, 0);
+
+function getPokemon(name){
+	new Pokemon = null;
+	if (name === "Carapuce"){
+		Pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau], 104, 53, 70, 60, 62, 48);
+	}
+	if (name === "Salamèche"){
+		Pokemon = new Pokemon("Salamèche", 50, "fire", null, [], 99, 62, 48, 65, 55, 63);
+	}
+	if (name === "Pikachu"){
+		Pokemon = new Pokemon("Pikachu", 50, "electric", null, [], 95, 60, 45, 60, 49, 95);
+	}
+	if (name === "Bulbizarre"){
+		Pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [], 105, 54, 54, 70, 70, 50);
+	}
+	if (name === "Evoli"){
+		Pokemon = new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60);
+	}
+	if (name === "Ronflex"){
+		new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35);
+	}
+
+	
+	return Pokemon
 
 }
 
@@ -100,16 +126,7 @@ class Pokemon {
     }
 }
 
-const pistolet_eau = new attack("pistolet à eau", "water", 0 , 1, 40, 0);
 
-
-const pokemons = {"Carapuce" : new Pokemon("Carapuce", 50, "water", null, [pistolet_eau], 104, 53, 70, 60, 62, 48),  
-"Salamèche" : new Pokemon("Salamèche", 50, "fire", null, [], 99, 62, 48, 65, 55, 63),  
-"Pikachu" : new Pokemon("Pikachu", 50, "electric", null, [], 95, 60, 45, 60, 49, 95) , 
-"Bulbizarre" : new Pokemon("Bulbizarre", 50, "grass", null, [], 105, 54, 54, 70, 70, 50),
-"Evoli" : new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60), 
-"Ronflex" : new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35)
-};
 
 //////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////    INTERFACE     ////////////////////////////////////////////////////
