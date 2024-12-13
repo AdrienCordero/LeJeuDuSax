@@ -75,6 +75,7 @@ class Pokemon {
         this.hpMax = hpMax;
         this.hp = hp;
         this.attacks = attacks;   // Tableau des attaques
+        this.isAlive = true;
     }
 
     attack(target, attackIndex) {
@@ -157,11 +158,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 			if(aleatoire < 0.5){
 				pokemon1.attack(pokemon2, attack1);
 				if(pokemon2.hp < 0){
+					pokemon2.isAlive = false;
 					//chooseNewPokemon(2);
 				}
 				else{
 					pokemon2.attack(pokemon1, attack2);
 					if(pokemon1.hp < 0 ){
+						pokemon1.isAlive = false
 						//chooseNewPokemon(1);
 					}
 				}
@@ -169,11 +172,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 			else{
 				pokemon2.attack(pokemon1, attack2);
 				if(pokemon1.hp < 0){
+					pokemon1.isAlive = false;
 					//chooseNewPokemon(1);
 				}
 				else{
 					pokemon1.attack(pokemon2, attack1);
 					if(pokemon2.hp < 0){
+						pokemon2.isAlive = false;
 						//chooseNewPokemon(2);
 					}
 				}
@@ -183,11 +188,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		else if(pokemon1.speed > pokemon2.speed){
 			pokemon1.attack(pokemon2, attack1);
 				if(pokemon2.hp < 0){
+					pokemon2.isAlive = false;
 					//chooseNewPokemon(2);
 				}
 				else{
 					pokemon2.attack(pokemon1, attack2);
 					if(pokemon1.hp < 0 ){
+						pokemon1.isAlive = false;
 						//chooseNewPokemon(1);
 					}
 				}
@@ -196,11 +203,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		else{
 		pokemon2.attack(pokemon1, attack2);
 				if(pokemon1.hp < 0){
+					pokemon1.isAlive = false;
 					//chooseNewPokemon(1);
 				}
 				else{
 					pokemon1.attack(pokemon2, attack1);
 					if(pokemon2.hp < 0){
+						pokemon2.isAlive = false;
 						//chooseNewPokemon(2);
 					}
 				}
