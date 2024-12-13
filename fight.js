@@ -141,14 +141,34 @@ function init() {
 
 function refreshButtons() {
     if (player == 1) {
-        if (pokemons1.length > 0)
+        document.getElementById("pseudoJoueur").textContent = "Au tour de " + user1;
+        if (pokemons1.length > 0) {
+            document.getElementById("imagePokemonAttaque0").src = "Images/" + pokemons1[0].name + ".png";
             document.getElementById("nomChangerPokemon0").textContent = pokemons1[0].name;
+        }
         else
-            document.getElementById("Attaques").removeChild(document.getElementById("changerPokemon0"));
-        if (pokemons1.length > 1)
+            document.getElementById("changerPokemon0").remove();
+        if (pokemons1.length > 1) {
+            document.getElementById("imagePokemonAttaque1").src = "Images/" + pokemons1[1].name + ".png";
             document.getElementById("nomChangerPokemon1").textContent = pokemons1[1].name;
+        }
         else
-            document.getElementById("Attaques").removeChild(document.getElementById("changerPokemon1"));
+            document.getElementById("changerPokemon1").remove();
+    }
+    if (player == 2) {
+        document.getElementById("pseudoJoueur").textContent = "Au tour de " + user2;
+        if (pokemons2.length > 0) {
+            document.getElementById("imagePokemonAttaque0").src = "Images/" + pokemons2[0].name + ".png";
+            document.getElementById("nomChangerPokemon0").textContent = pokemons2[0].name;
+        }
+        else
+            document.getElementById("changerPokemon0").remove();
+        if (pokemons2.length > 1) {
+            document.getElementById("imagePokemonAttaque1").src = "Images/" + pokemons2[1].name + ".png";
+            document.getElementById("nomChangerPokemon1").textContent = pokemons2[1].name;
+        }
+        else
+            document.getElementById("changerPokemon1").remove();
     }
 }
 
