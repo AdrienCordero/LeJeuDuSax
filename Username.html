@@ -141,47 +141,8 @@
         <h4 id="userName1">Nom d'utilisateur 1</h4>
         <h4 id="userName2">Nom d'utilisateur 2</h4>
     </div>
-    <input type="text" id="output" placeholder="Choose Your Username" readonly><br><br>
-    <div class="letter-grid">
-        <div class="letter">A</div>
-        <div class="letter">B</div>
-        <div class="letter">C</div>
-        <div class="letter">D</div>
-        <div class="letter">E</div>
-        <div class="letter">F</div>
-        <div class="letter">G</div>
-        <div class="letter">H</div>
-        <div class="letter">I</div>
-        <div class="letter">J</div>
-        <div class="letter">K</div>
-        <div class="letter">L</div>
-        <div class="letter">M</div>
-        <div class="letter">N</div>
-        <div class="letter">O</div>
-        <div class="letter">P</div>
-        <div class="letter">Q</div>
-        <div class="letter">R</div>
-        <div class="letter">S</div>
-        <div class="letter">T</div>
-        <div class="letter">U</div>
-        <div class="letter">V</div>
-        <div class="letter">W</div>
-        <div class="letter">X</div>
-        <div class="letter">Y</div>
-        <div class="letter">Z</div>
-        <div class="letter">0</div>
-        <div class="letter">1</div>
-        <div class="letter">2</div>
-        <div class="letter">3</div>
-        <div class="letter">4</div>
-        <div class="letter">5</div>
-        <div class="letter">6</div>
-        <div class="letter">7</div>
-        <div class="letter">8</div>
-        <div class="letter">9</div>
-    </div>
+    <input type="text" id="output" placeholder="Choose Your Username"><br><br>
     <div class="buttons">
-        <button class="deleteBtn" id="deleteBtn">Delete</button>
         <button class="continueBtn" id="continueBtn">Continue</button>
     </div>
     <button id="next-button" onclick="next()">
@@ -190,9 +151,7 @@
     </button>
 </body>
 <script>
-    const letters = document.querySelectorAll('.letter');
     const input = document.getElementById('output');
-    const deleteBtn = document.getElementById('deleteBtn');
     const validateBtn = document.getElementById('continueBtn');
     const userName1 = document.getElementById('userName1');
     const userName2 = document.getElementById('userName2');
