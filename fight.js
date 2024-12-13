@@ -156,17 +156,54 @@ function apply_attack(attack1, switch1, attack2, switch2){
 			let aleatoire = Math.random();
 			if(aleatoire < 0.5){
 				pokemon1.attack(pokemon2, attack1);
-				if(pokemon2.hp < 0);
+				if(pokemon2.hp < 0){
+					//chooseNewPokemon(2);
+				}
+				else{
+					pokemon2.attack(pokemon1, attack2);
+					if(pokemon1.hp < 0 ){
+						//chooseNewPokemon(1);
+					}
+				}
 			}
 			else{
-			pokemon2.attack(pokemon1, attack2);
+				pokemon2.attack(pokemon1, attack2);
+				if(pokemon1.hp < 0){
+					//chooseNewPokemon(1);
+				}
+				else{
+					pokemon1.attack(pokemon2, attack1);
+					if(pokemon2.hp < 0){
+						//chooseNewPokemon(2);
+					}
+				}
 			}
 		}
 		
 		else if(pokemon1.speed > pokemon2.speed){
-		
+			pokemon1.attack(pokemon2, attack1);
+				if(pokemon2.hp < 0){
+					//chooseNewPokemon(2);
+				}
+				else{
+					pokemon2.attack(pokemon1, attack2);
+					if(pokemon1.hp < 0 ){
+						//chooseNewPokemon(1);
+					}
+				}
+			}
 		}
 		else{
+		pokemon2.attack(pokemon1, attack2);
+				if(pokemon1.hp < 0){
+					//chooseNewPokemon(1);
+				}
+				else{
+					pokemon1.attack(pokemon2, attack1);
+					if(pokemon2.hp < 0){
+						//chooseNewPokemon(2);
+					}
+				}
 		
 		}
 	}
