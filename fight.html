@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Projet pokemon</title>
+        
+        <link rel="stylesheet" href="fight.css">
+    </head>
+
+    <body>
+        <div class="rectangle">
+
+            <div class="infosPokemon" id="infosPokemon1">
+                <div class="nomRectangle">
+                    <label class="nomPokemon" id="nom1">Nom</label>
+                    <label class="niveau" id="niveau1">N. 1</label>
+                </div>
+                <div class="containerPV">
+                    <div class="PV" id="pv1">50%</div>
+                </div>
+            </div>
+            <div class="infosPokemon" id="infosPokemon2">
+                <div class="nomRectangle">
+                    <label class="nomPokemon" id="nom2">Nom</label>
+                    <label class="niveau" id="niveau2">N. 1</label>
+                </div>
+                <div class="containerPV">
+                    <div class="PV" id="pv2">50%</div>
+                </div>
+            </div>
+            <img src="" alt="pokemon1" id="imagePokemon1">
+            <img src="" alt="pokemon2" id="imagePokemon2">
+        </div>
+
+        <div class="Attaques">
+            <div class="bouttonAttaque">
+                <img src="" alt="type" class="typeAttaque">
+                <label class="nomAttaque">Attaque 1</label>
+            </div>
+            <div class="bouttonAttaque">
+                <img src="" alt="type" class="typeAttaque">
+                <label class="nomAttaque">Attaque 2</label>
+            </div>
+            <div class="bouttonAttaque">
+                <img src="" alt="type" class="typeAttaque">
+                <label class="nomAttaque">Attaque 3</label>
+            </div>
+            <div class="bouttonAttaque">
+                <img src="" alt="type" class="typeAttaque">
+                <label class="nomAttaque">Attaque 4</label>
+            </div>
+            <div class="bouttonAttaque" id="changerPokemon0" onclick="changePokemon(0)">
+                <img src="" alt="pokeball" class="typeAttaque">
+                <label class="nomAttaque" id="nomChangerPokemon0"></label>
+            </div>
+            <div class="bouttonAttaque" id="changerPokemon1" onclick="changePokemon(1)">
+                <img src="" alt="pokeball" class="typeAttaque">
+                <label class="nomAttaque" id="nomChangerPokemon1"></label>
+            </div>
+        </div>
+        <script type="text/javascript" src="fight.js" defer></script>
+    </body>
+</html>

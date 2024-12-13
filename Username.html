@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('Images/pokemonWallpaper.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .username-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; 
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            border: solid 1px black;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-size: 18px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .letter-grid {
+            display: inline-grid;
+            grid-template-columns: repeat(6, 50px);
+            gap: 10px;
+            margin: 20px auto;
+        }
+
+        .letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border: solid 1px black;
+            transition: background-color 0.3s;
+        }
+
+        .letter:hover,
+        .letter.active {
+            border: solid 1px whitesmoke;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .deleteBtn, .continueBtn {
+            padding: 5px 10px;
+            margin: 5px;
+            width: fit-content;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: white;
+        }
+
+        .deleteBtn {
+            background-color: #ff4d4d;
+        }
+
+        .deleteBtn:hover {
+            background-color: #cc0000;
+        }
+
+        .continueBtn {
+            background-color: #2100f6;
+        }
+
+        .continueBtn:hover {
+            background-color: #230052;
+        }
+
+        .next-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .next-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .next-button .arrow {
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="username-container">
+        <h4 id="userName1">Nom d'utilisateur 1</h4>
+        <h4 id="userName2">Nom d'utilisateur 2</h4>
+    </div>
+    <input type="text" id="output" placeholder="Choose Your Username" readonly><br><br>
+    <div class="letter-grid">
+        <div class="letter">A</div>
+        <div class="letter">B</div>
+        <div class="letter">C</div>
+        <div class="letter">D</div>
+        <div class="letter">E</div>
+        <div class="letter">F</div>
+        <div class="letter">G</div>
+        <div class="letter">H</div>
+        <div class="letter">I</div>
+        <div class="letter">J</div>
+        <div class="letter">K</div>
+        <div class="letter">L</div>
+        <div class="letter">M</div>
+        <div class="letter">N</div>
+        <div class="letter">O</div>
+        <div class="letter">P</div>
+        <div class="letter">Q</div>
+        <div class="letter">R</div>
+        <div class="letter">S</div>
+        <div class="letter">T</div>
+        <div class="letter">U</div>
+        <div class="letter">V</div>
+        <div class="letter">W</div>
+        <div class="letter">X</div>
+        <div class="letter">Y</div>
+        <div class="letter">Z</div>
+        <div class="letter">0</div>
+        <div class="letter">1</div>
+        <div class="letter">2</div>
+        <div class="letter">3</div>
+        <div class="letter">4</div>
+        <div class="letter">5</div>
+        <div class="letter">6</div>
+        <div class="letter">7</div>
+        <div class="letter">8</div>
+        <div class="letter">9</div>
+    </div>
+    <div class="buttons">
+        <button class="deleteBtn" id="deleteBtn">Delete</button>
+        <button class="continueBtn" id="continueBtn">Continue</button>
+    </div>
+    <button id="next-button" onclick="next()">
+        <label>Next</label>>
+        <span class="arrow">➤</span>
+    </button>
+</body>
+<script>
+    const letters = document.querySelectorAll('.letter');
+    const input = document.getElementById('output');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const validateBtn = document.getElementById('continueBtn');
+    const userName1 = document.getElementById('userName1');
+    const userName2 = document.getElementById('userName2');
+
+    let currentUserName = 1;
+
+    letters.forEach(letter => {
+        letter.addEventListener('click', () => {
+            input.value += letter.textContent;
+        });
+    });
+
+    deleteBtn.addEventListener('click', () => {
+        input.value = input.value.slice(0, -1);
+    });
+
+    validateBtn.addEventListener('click', () => {
+        if (currentUserName === 1) {
+            userName1.textContent = input.value;
+            currentUserName = 2;
+            input.value = "";
+
+        } 
+        else if (currentUserName === 2) {
+            userName2.textContent = input.value;
+            currentUserName = 1;
+            input.value = "";
+        }
+    });
+
+    function next() {
+        window.location.href = "chooseChar.html?user1=" + userName1.textContent + "&user2=" + userName2.textContent;
+    }
+</script>
+</html>

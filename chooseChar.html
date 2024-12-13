@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet", href="chooseChar.css">
+        <title>Web Programming Project</title>
+    </head>
+    <body>
+        <h1>Choose Your Characters</h1>
+        <p class="instructions">Each player choose 3 characters:</p>
+        <div class="userContainer">
+            <div class="userColumn">
+                <h2 class="instructions" id="nomUser1"></h2>
+                <div class="characterButtons">
+                    <button id="chr1" onmouseover="showImage('chr1')" onmouseout="hideImage('chr1')" onclick="selectCharacter('Bulbizarre', 'chr1', 1)">Bulbizarre</button>
+                    <button id="chr2" onmouseover="showImage('chr2')" onmouseout="hideImage('chr2')" onclick="selectCharacter('Carapuce', 'chr2', 1)">Carapuce</button>
+                    <button id="chr3" onmouseover="showImage('chr3')" onmouseout="hideImage('chr3')" onclick="selectCharacter('Evoli', 'chr3', 1)">Évoli</button>
+                    <button id="chr4" onmouseover="showImage('chr4')" onmouseout="hideImage('chr4')" onclick="selectCharacter('Pikachu', 'chr4', 1)">Pikachu</button>
+                    <button id="chr5" onmouseover="showImage('chr5')" onmouseout="hideImage('chr5')" onclick="selectCharacter('Ronflex', 'chr5', 1)">Ronflex</button>
+                    <button id="chr6" onmouseover="showImage('chr6')" onmouseout="hideImage('chr6')" onclick="selectCharacter('Salamèche', 'chr6', 1)">Salamèche</button>
+                </div>
+                <h3 class="instructions">Selected Characters:</h3>
+                <ul id="user1SelectedCharacters" class="selectedCharacters"></ul>
+            </div>
+
+            <div class="userColumn">
+                <h2 class="instructions" id="nomUser2"></h2>
+                <div class="characterButtons">
+                    <button id="chr1" onmouseover="showImage('chr1')" onmouseout="hideImage('chr1')" onclick="selectCharacter('Bulbizzare', 'chr1', 2)">Bulbizarre</button>
+                    <button id="chr2" onmouseover="showImage('chr2')" onmouseout="hideImage('chr2')" onclick="selectCharacter('Carapuce', 'chr2', 2)">Carapuce</button>
+                    <button id="chr3" onmouseover="showImage('chr3')" onmouseout="hideImage('chr3')" onclick="selectCharacter('Evoli', 'chr3', 2)">Évoli</button>
+                    <button id="chr4" onmouseover="showImage('chr4')" onmouseout="hideImage('chr4')" onclick="selectCharacter('Pikachu', 'chr4', 2)">Pikachu</button>
+                    <button id="chr5" onmouseover="showImage('chr5')" onmouseout="hideImage('chr5')" onclick="selectCharacter('Ronflex', 'chr5', 2)">Ronflex</button>
+                    <button id="chr6" onmouseover="showImage('chr6')" onmouseout="hideImage('chr6')" onclick="selectCharacter('Salamèche', 'chr6', 2)">Salamèche</button>
+                </div>
+                <h3 class="instructions">Selected Characters:</h3>
+                <ul id="user2SelectedCharacters" class="selectedCharacters"></ul>
+            </div>
+        </div>
+
+        <a href="Username.html">Back</a>
+        <a href="" id="lienStart">Start</a>
+
+        <div id="chr1Image" class="characterImage">
+            <img src="Images/bulbizarre.png" alt="Character 1">
+        </div>
+        <div id="chr2Image" class="characterImage">
+            <img src="Images/carapuce.png" alt="Character 2">
+        </div>
+        <div id="chr3Image" class="characterImage">
+            <img src="Images/evoli.png" alt="Character 3">
+        </div>
+        <div id="chr4Image" class="characterImage">
+            <img src="Images/pikachu.png" alt="Character 4">
+        </div>
+        <div id="chr5Image" class="characterImage">
+            <img src="Images/ronflex.png" alt="Character 5">
+        </div>
+        <div id="chr6Image" class="characterImage">
+            <img src="Images/salamèche.png" alt="Character 6">
+        </div>
+    </body>
+    <script type="text/javascript" src="chooseChar.js"></script>
+</html>

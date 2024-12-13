@@ -1,0 +1,132 @@
+body {
+    background-color: rgb(0, 55, 71);
+    background-image: url('Images/pokemonWallpaper.jpg');
+}
+body p#instructions {
+    background-color: aliceblue;
+}
+.instructions {
+    background-color: aliceblue;
+}
+h1 {
+    padding: 40px 60px;
+    background-color: #16c9ff;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: right;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+a {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.carapuceJamming {
+    display: flex;
+    justify-content: center;
+}
+.characterImage {
+    display: none;
+    width: 100px;
+    margin-top: 10px;
+}
+.selectedCharacters {
+    margin-top: 20px;
+    padding: 0;
+}
+.removeButton {
+    margin-left: 10px;
+    cursor: pointer;
+    color: red;
+}
+
+.backButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.backButton button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.userContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: rgb(193, 255, 207);
+
+}
+.userColumn {
+    width: 45%;
+}
+.userColumn h2 {
+    text-align: center;
+}
+.characterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.characterButtons button {
+    padding: 20px;
+    width: 120px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 50px;
+}
+characterButtons button:hover {
+    background-color: #fffc37;
+    color:black
+}
+.attractiveButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.attractiveButton button {
+    width: 150px;
+    height: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+}
+.attractiveButton button:hover {
+    background-color: #fffc37;
+    color:black
+}

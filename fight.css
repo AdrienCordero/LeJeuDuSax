@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #53d3cf;
+}
+
+.rectangle {
+    width: 80%;
+    aspect-ratio: 16/9;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    background-image: url("Images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.infosPokemon {
+    background-color: antiquewhite;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 15px;
+    border: 2px solid wheat;
+}
+
+.nomPokemon {
+    padding: 5%;
+}
+
+#infosPokemon1 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 20%;
+    height: 13%;
+}
+
+#infosPokemon2 {
+    position: absolute;
+    top: 77%;
+    left: 70%;
+    width: 20%;
+    height: 13%;
+}
+
+.nomRectangle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.niveau {
+    align-content: center;
+}
+
+.containerPV {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.PV {
+    height: 20px;
+    width: 50%; /* Pourcentage de progression */
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    line-height: 20px; /* Alignement vertical du texte */
+    font-size: 14px;
+}
+
+#imagePokemon1 {
+    position: absolute;
+    top: -3%;
+    left: 55%;
+    width: 30%;
+}
+
+#imagePokemon2 {
+    position: absolute;
+    top: 25%;
+    left: 17%;
+    width: 30%;
+}
+
+.Attaques {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px; /* Espacement entre les boutons */
+}
+
+.bouttonAttaque {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: antiquewhite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+    border: 2px solid wheat;
+}
+
+.buttons button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Légère mise en relief */
+}
+
+.buttons button:active {
+    background-color: #003f7f;
+}
