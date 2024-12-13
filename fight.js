@@ -36,6 +36,19 @@ class Attack {
 }
 
 const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
+const morsure = new Attack("morsure", "dark", 1, 0, 60, 0);
+const lanceFlamme = new Attack("lance Flamme", "fire", 0, 1, 90, 0);
+const griffe = new Attack("griffe", "normal", 1, 0, 40, 0);
+const tonnerre = new Attack("tonnerre", "electric", 0, 1, 90, 0);
+const viveAttack = new Attack("Vive attaque", "normal", 1, 0, 40, 0);
+const queueFer = new Attack("queue de fer", "steel", 1, 0, 100, 0);
+const meteor = new Attack("Meteor", "normal", 0, 1, 60, 0);
+const machouille = new Attack("Machouille", "dark", 1, 0, 90, 0);
+const lechouille = new Attack("lechouille", "ghost", 1, 0, 30, 0);
+const belier = new Attack("belier", "normal", 1, 0, 90, 0);
+const fouetLiane = new Attack("fouet liane", "grass", 1, 0, 45, 0);
+const canonGraine = new Attack "canon graine", "grass", 1, 0, 80, 0);
+const hydroqueue = new Attack("hydroqueue", "water", 1, 0, 90, 0);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +62,7 @@ class Pokemon {
     
     
     
-    constructor(name, level, type1, type2, hp, atkPoint, attacks, defPoint, speAtkPoint, speDefPoint, speedPoint) {
+    constructor(name, level, type1, type2, hpMax, hp, atkPoint, attacks, defPoint, speAtkPoint, speDefPoint, speedPoint) {
         this.name = name;         
         this.type1 = type1;         
         this.type2 = type2;
@@ -59,6 +72,7 @@ class Pokemon {
         this.speAtkPoint = speAtkPoint;
         this.speDefPoint = speDefPoint;
         this.speedPoint = speedPoint; 
+        this.hpMax = hpMax;
         this.hp = hp;
         this.attacks = attacks;   // Tableau des attaques
     }
@@ -103,22 +117,22 @@ init();
 function getPokemon(name){
 	let pokemon = null;
 	if (name === "Carapuce"){
-		pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau], 104, 53, 70, 60, 62, 48);
+		pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau, morsure, hydroqueue], 104, 104, 53, 70, 60, 62, 48);
 	}
 	if (name === "Salamèche"){
-		pokemon = new Pokemon("Salamèche", 50, "fire", null, [], 99, 62, 48, 65, 55, 63);
+		pokemon = new Pokemon("Salamèche", 50, "fire", null, [lanceFlamme, griffe], 99,99, 62, 48, 65, 55, 63);
 	}
 	if (name === "Pikachu"){
-		pokemon = new Pokemon("Pikachu", 50, "electric", null, [], 95, 60, 45, 60, 49, 95);
+		pokemon = new Pokemon("Pikachu", 50, "electric", null, [tonnerre, viveAttack, queueFer], 95, 95, 60, 45, 60, 49, 95);
 	}
 	if (name === "Bulbizarre"){
-		pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [], 105, 54, 54, 70, 70, 50);
+		pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [belier, canonGraine, fouetLiane], 105, 105, 54, 54, 70, 70, 50);
 	}
 	if (name === "Evoli"){
-		pokemon = new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60);
+		pokemon = new Pokemon("Evoli", 50, "normal", null, [viveAttack, morsure, meteor], 115, 115, 60, 49, 50, 77, 60);
 	}
 	if (name === "Ronflex"){
-		pokemon = new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35);
+		pokemon = new Pokemon("Ronflex", 50, "normal", null, [lechouille, machouille], 220, 220, 115, 70, 70, 115, 35);
 	}
 
 	
@@ -126,6 +140,38 @@ function getPokemon(name){
 
 }
 
+
+
+function apply_attack(attack1, switch1, attack2, switch2){
+	if(switch1 != 0){
+		changePokemon(1, switch1);
+	}
+	if (switch2 != 0){
+		changePokemon(2, switch2);
+	}
+	
+	if(attack1 != 0 && attack2 != 0){
+		
+		if(poekmon1.speed === pokemon2.speed){
+			let aleatoire = Math.random();
+			if(aleatoire < 0.5){
+				pokemon1.attack(pokemon2, attack1);
+				if(pokemon2.hp < 0);
+			}
+			else{
+			pokemon2.attack(pokemon1, attack2);
+			}
+		}
+		
+		else if(pokemon1.speed > pokemon2.speed){
+		
+		}
+		else{
+		
+		}
+	}
+	
+}
 
 
 
