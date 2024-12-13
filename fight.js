@@ -35,6 +35,8 @@ class Attack {
 	} 
 }
 
+const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////    POKEMON     ////////////////////////////////////////////////////
@@ -97,8 +99,6 @@ let attack2 = null;
 
 let player = 1;
 init();
-
-const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
 
 function getPokemon(name){
 	let pokemon = null;
