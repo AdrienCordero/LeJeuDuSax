@@ -83,10 +83,6 @@ class Pokemon {
     }
 }
 
-function getPokemon(name) {
-    return new Pokemon(name, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-}
-
 const pistolet_eau = new attack("pistolet à eau", "water", 0 , 1, 40, 0);
 
 
@@ -97,7 +93,6 @@ const pokemons = {"Carapuce" : new Pokemon("Carapuce", 50, "water", null, [pisto
 "Evoli" : new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60), 
 "Ronflex" : new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35)
 };
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////    INTERFACE     ////////////////////////////////////////////////////
