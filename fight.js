@@ -37,28 +37,28 @@ init();
 const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
 
 function getPokemon(name){
-	new Pokemon = null;
+	let pokemon = null;
 	if (name === "Carapuce"){
-		Pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau], 104, 53, 70, 60, 62, 48);
+		pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau], 104, 53, 70, 60, 62, 48);
 	}
 	if (name === "Salamèche"){
-		Pokemon = new Pokemon("Salamèche", 50, "fire", null, [], 99, 62, 48, 65, 55, 63);
+		pokemon = new Pokemon("Salamèche", 50, "fire", null, [], 99, 62, 48, 65, 55, 63);
 	}
 	if (name === "Pikachu"){
-		Pokemon = new Pokemon("Pikachu", 50, "electric", null, [], 95, 60, 45, 60, 49, 95);
+		pokemon = new Pokemon("Pikachu", 50, "electric", null, [], 95, 60, 45, 60, 49, 95);
 	}
 	if (name === "Bulbizarre"){
-		Pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [], 105, 54, 54, 70, 70, 50);
+		pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [], 105, 54, 54, 70, 70, 50);
 	}
 	if (name === "Evoli"){
-		Pokemon = new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60);
+		pokemon = new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60);
 	}
 	if (name === "Ronflex"){
-		new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35);
+		pokemon = new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35);
 	}
 
 	
-	return Pokemon
+	return pokemon
 
 }
 
