@@ -1,16 +1,3 @@
-let queryString = window.location.search;
-let params = new URLSearchParams(queryString);
-
-let user1 = params.get('user1');
-let user2 = params.get('user2');
-let pokemon1 = getPokemon(params.get('chr1'));
-let pokemon2 = getPokemon(params.get('chr4'));
-let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
-let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
-
-let player = 1;
-init();
-
 const typeEffectiveness = {
     "normal":  { "normal": 1, "fire": 1, "water": 1, "electric": 1, "grass": 1, "ice": 1, "fighting": 1, "poison": 1, "ground": 1, "flying": 1, "psychic": 1, "bug": 1, "rock": 1, "ghost": 0, "dragon": 1, "dark": 1, "steel": 0.5, "fairy": 1 },
     "fire":    { "normal": 1, "fire": 0.5, "water": 0.5, "electric": 1, "grass": 2, "ice": 2, "fighting": 1, "poison": 1, "ground": 1, "flying": 1, "psychic": 1, "bug": 2, "rock": 0.5, "ghost": 1, "dragon": 0.5, "dark": 1, "steel": 2, "fairy": 1 },
@@ -31,6 +18,19 @@ const typeEffectiveness = {
     "steel":   { "normal": 1, "fire": 0.5, "water": 0.5, "electric": 0.5, "grass": 1, "ice": 2, "fighting": 2, "poison": 1, "ground": 2, "flying": 1, "psychic": 1, "bug": 1, "rock": 2, "ghost": 1, "dragon": 1, "dark": 1, "steel": 1, "fairy": 2 },
     "fairy":   { "normal": 1, "fire": 1, "water": 1, "electric": 1, "grass": 1, "ice": 1, "fighting": 2, "poison": 1, "ground": 1, "flying": 1, "psychic": 1, "bug": 1, "rock": 1, "ghost": 1, "dragon": 2, "dark": 2, "steel": 0.5, "fairy": 1 }
 };
+
+let queryString = window.location.search;
+let params = new URLSearchParams(queryString);
+
+let user1 = params.get('user1');
+let user2 = params.get('user2');
+let pokemon1 = getPokemon(params.get('chr1'));
+let pokemon2 = getPokemon(params.get('chr4'));
+let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
+let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
+
+let player = 1;
+init();
 
 
 
