@@ -87,6 +87,17 @@ function getPokemon(name) {
     return new Pokemon(name, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 }
 
+const pistolet_eau = new attack("pistolet à eau", "water", 0 , 1, 40, 0);
+
+
+const pokemons = {"Carapuce" : new Pokemon("Carapuce", 50, "water", null, [pistolet_eau], 104, 53, 70, 60, 62, 48),  
+"Salamèche" : new Pokemon("Salamèche", 50, "fire", null, [], 99, 62, 48, 65, 55, 63),  
+"Pikachu" : new Pokemon("Pikachu", 50, "electric", null, [], 95, 60, 45, 60, 49, 95) , 
+"Bulbizarre" : new Pokemon("Bulbizarre", 50, "grass", null, [], 105, 54, 54, 70, 70, 50),
+"Evoli" : new Pokemon("Evoli", 50, "normal", null, [], 115, 60, 49, 50, 77, 60), 
+"Ronflex" : new Pokemon("Ronflex", 50, "normal", null, [], 220, 115, 70, 70, 115, 35)
+};
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////    INTERFACE     ////////////////////////////////////////////////////
