@@ -32,7 +32,9 @@ let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))]
 let player = 1;
 init();
 
+function test4(){
 
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
