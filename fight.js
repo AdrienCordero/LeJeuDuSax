@@ -88,10 +88,12 @@ class Pokemon {
         }
         
         if(attack.is_physical){
-       		const hp_lost = (((this.level * 0.4 + 2)* this.atkPoint * attack.power) / (target.defPoint * 50) +2) * CM
+       		const hp_lost = (((this.level * 0.4 + 2)* this.atkPoint * attack.power) / (target.defPoint * 50) +2) * CM;
+       		target.hp -= hp_lost;
         }
         if (attack.is_special){
-        	const hp_lost = (((this.level * 0.4 + 2)* this.atkSpePoint * attack.power) / (target.defSpePoint * 50) +2) * CM
+        	const hp_lost = (((this.level * 0.4 + 2)* this.atkSpePoint * attack.power) / (target.defSpePoint * 50) +2) * CM;
+        	target.hp -= hp_lost;
         }
         
         if(attack.has_special_effect){
