@@ -80,20 +80,27 @@ class Pokemon {
     }
 
     attack(target, attackIndex) {
+    	console.log(this.name);
+    	console.log(this.attacks);
+    	console.log(attackIndex);
         const attack = this.attacks[attackIndex]; // Récupère l'attaque sélectionnée
         
-        let CM = typeEffectiveness[attack.type][target.type1]
+        console.log(attack);
+        
+
+        let CM = typeEffectiveness[attack.type][target.type1];
         
         if(target.type2){
-        	CM *= typeEffectiveness[attack.type][target.type2]
+        	CM *= typeEffectiveness[attack.type][target.type2];
         }
-        
-        if(attack.is_physical){
+        if(attack.isPhysical == 1){
        		const hp_lost = (((this.level * 0.4 + 2)* this.atkPoint * attack.power) / (target.defPoint * 50) +2) * CM;
+       		console.log(hp_lost);
        		target.hp -= hp_lost;
         }
-        if (attack.is_special){
-        	const hp_lost = (((this.level * 0.4 + 2)* this.atkSpePoint * attack.power) / (target.defSpePoint * 50) +2) * CM;
+        if (attack.isSpecial){
+        	const hp_lost = (((this.level * 0.4 + 2)* this.speAtkPoint * attack.power) / (target.speDefPoint * 50) +2) * CM;
+        	console.log(hp_lost);
         	target.hp -= hp_lost;
         }
         
@@ -110,6 +117,7 @@ let user1 = params.get('user1');
 let user2 = params.get('user2');
 let pokemon1 = getPokemon(params.get('chr1'));
 let pokemon2 = getPokemon(params.get('chr4'));
+
 let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
 let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
 
@@ -127,7 +135,7 @@ function getPokemon(name){
 	if (name === "Pikachu"){
 		pokemon = new Pokemon("Pikachu", 50, "electric", null, [tonnerre, viveAttack, queueFer], 95, 95, 60, 45, 60, 49, 95);
 	}
-	if (name === "Bulbizarre"){
+	if (name == "Bulbizarre"){
 		pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [belier, canonGraine, fouetLiane], 105, 105, 54, 54, 70, 70, 50);
 	}
 	if (name === "Evoli"){
@@ -137,7 +145,6 @@ function getPokemon(name){
 		pokemon = new Pokemon("Ronflex", 50, "normal", null, [lechouille, machouille], 220, 220, 115, 70, 70, 115, 35);
 	}
 
-	
 	return pokemon
 
 }
@@ -145,18 +152,25 @@ function getPokemon(name){
 
 
 function apply_attack(attack1, switch1, attack2, switch2){
+
 	if(switch1 != -1){
-		changePokemon(1, switch1);
+		let reviens = pokemon1;
+		pokemon1 = pokemons1[switch1];
+		pokemons1[switch1] = reviens;
 	}
 	if (switch2 != -1){
-		changePokemon(2, switch2);
+		let reviens = pokemon2;
+		pokemon2 = pokemons2[switch2];
+		pokemons2[switch2] = reviens;
 	}
-	
+	console.log(attack1, switch1, attack2, switch2);
 	if(attack1 != -1 && attack2 != -1){
 		
-		if(pokemon1.speed === pokemon2.speed){
+		if(pokemon1.speedPoint === pokemon2.speedPoint){
+			console.log("speed egal");
 			let aleatoire = Math.random();
 			if(aleatoire < 0.5){
+				console.log(aleatoire)
 				pokemon1.attack(pokemon2, attack1);
 				if(pokemon2.hp < 0){
 					pokemon2.isAlive = false;
@@ -171,6 +185,7 @@ function apply_attack(attack1, switch1, attack2, switch2){
 				}
 			}
 			else{
+				console.log(aleatoire)
 				pokemon2.attack(pokemon1, attack2);
 				if(pokemon1.hp < 0){
 					pokemon1.isAlive = false;
@@ -215,6 +230,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
             }
 		}
 	}
+	else if(attack1 != -1){
+		pokemon1.attack(pokemon2, attack1);
+	}
+	else if(attack2 != -1){
+		pokemon2.attack(pokemon1, attack2);
+	}
+	//refresh()
 }
 
 
@@ -236,19 +258,30 @@ function buttonPokemon(pokemons, indice) {
         document.getElementById("changerPokemon" + indice).remove();
 }
 
+function chooseNewPokemon(player){
+	//TODO
+}
+
 function refreshButtons(i) {
     let pokemon = i == 1 ? pokemon1 : pokemon2;
     let pokemons = i == 1 ? pokemons1 : pokemons2;
     let user = i == 1 ? user1 : user2;
+    
+    if(i == 2){
+    	console.log('taille des attacks: ' + pokemon.attacks.length);
+    }
 
     document.getElementById("pseudoJoueur").textContent = "Au tour de " + user;
 
     for (let j=0; j < pokemon.attacks.length; j++) {
+    	document.getElementById("attack" + (j+1)).hidden = false;
         document.getElementById("imageAttack" + (j + 1)).src = "Images/" + pokemon.attacks[j].type + ".png";//pokemon.attacks[j].type + ".png"
         document.getElementById("nomAttack" + (j + 1)).textContent = pokemon.attacks[j].name;
     }
-    for (let j=pokemon.attacks.length; j < 4; j++)
-        document.getElementById("attack" + (j+1)).hidden = true;
+    for (let j=pokemon.attacks.length; j < 4; j++){
+    	document.getElementById("attack" + (j+1)).hidden = true;
+    }
+        
 
     buttonPokemon(pokemons, 0);
     buttonPokemon(pokemons, 1);
