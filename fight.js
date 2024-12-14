@@ -47,7 +47,7 @@ const machouille = new Attack("Machouille", "dark", 1, 0, 90, 0);
 const lechouille = new Attack("lechouille", "ghost", 1, 0, 30, 0);
 const belier = new Attack("belier", "normal", 1, 0, 90, 0);
 const fouetLiane = new Attack("fouet liane", "grass", 1, 0, 45, 0);
-const canonGraine = new Attack "canon graine", "grass", 1, 0, 80, 0);
+const canonGraine = new Attack("canon graine", "grass", 1, 0, 80, 0);
 const hydroqueue = new Attack("hydroqueue", "water", 1, 0, 90, 0);
 
 
@@ -153,7 +153,7 @@ function apply_attack(attack1, switch1, attack2, switch2){
 	
 	if(attack1 != 0 && attack2 != 0){
 		
-		if(poekmon1.speed === pokemon2.speed){
+		if(pokemon1.speed === pokemon2.speed){
 			let aleatoire = Math.random();
 			if(aleatoire < 0.5){
 				pokemon1.attack(pokemon2, attack1);
@@ -187,36 +187,33 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		
 		else if(pokemon1.speed > pokemon2.speed){
 			pokemon1.attack(pokemon2, attack1);
-				if(pokemon2.hp < 0){
-					pokemon2.isAlive = false;
-					//chooseNewPokemon(2);
-				}
-				else{
-					pokemon2.attack(pokemon1, attack2);
-					if(pokemon1.hp < 0 ){
-						pokemon1.isAlive = false;
-						//chooseNewPokemon(1);
-					}
-				}
-			}
+            if(pokemon2.hp < 0){
+                pokemon2.isAlive = false;
+                //chooseNewPokemon(2);
+            }
+            else{
+                pokemon2.attack(pokemon1, attack2);
+                if(pokemon1.hp < 0 ){
+                    pokemon1.isAlive = false;
+                    //chooseNewPokemon(1);
+                }
+            }
 		}
 		else{
-		pokemon2.attack(pokemon1, attack2);
-				if(pokemon1.hp < 0){
-					pokemon1.isAlive = false;
-					//chooseNewPokemon(1);
-				}
-				else{
-					pokemon1.attack(pokemon2, attack1);
-					if(pokemon2.hp < 0){
-						pokemon2.isAlive = false;
-						//chooseNewPokemon(2);
-					}
-				}
-		
+		    pokemon2.attack(pokemon1, attack2);
+            if(pokemon1.hp < 0){
+                pokemon1.isAlive = false;
+                //chooseNewPokemon(1);
+            }
+            else{
+                pokemon1.attack(pokemon2, attack1);
+                if(pokemon2.hp < 0){
+                    pokemon2.isAlive = false;
+                    //chooseNewPokemon(2);
+                }
+            }
 		}
 	}
-	
 }
 
 
