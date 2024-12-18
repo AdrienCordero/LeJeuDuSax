@@ -80,10 +80,7 @@ class Pokemon {
     }
 
     attack(target, attackIndex) {
-
         const attack = this.attacks[attackIndex]; // Récupère l'attaque sélectionnée
-        
-
         let CM = typeEffectiveness[attack.type][target.type1];
         
         if(target.type2){
@@ -157,8 +154,7 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		pokemon2 = pokemons2[switch2];
 		pokemons2[switch2] = reviens;
 	}
-
-	if(attack1 != -1 && attack2 != -1){
+    if(attack1 != -1 && attack2 != -1){
 		
 		if(pokemon1.speedPoint === pokemon2.speedPoint){
 			let aleatoire = Math.random();
@@ -250,7 +246,7 @@ function buttonPokemon(pokemons, indice) {
 }
 
 function chooseNewPokemon(player){
-	//TODO
+	console.log("chooseNewPokemon");
 }
 
 function refreshButtons(i) {
