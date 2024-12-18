@@ -154,13 +154,11 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		pokemon2 = pokemons2[switch2];
 		pokemons2[switch2] = reviens;
 	}
-	if(attack1 != -1 && attack2 != -1){
+    if(attack1 != -1 && attack2 != -1){
 		
 		if(pokemon1.speedPoint === pokemon2.speedPoint){
-			console.log("speed egal");
 			let aleatoire = Math.random();
 			if(aleatoire < 0.5){
-				console.log(aleatoire)
 				pokemon1.attack(pokemon2, attack1);
 				if(pokemon2.hp < 0){
 					pokemon2.isAlive = false;
@@ -175,7 +173,6 @@ function apply_attack(attack1, switch1, attack2, switch2){
 				}
 			}
 			else{
-				console.log(aleatoire)
 				pokemon2.attack(pokemon1, attack2);
 				if(pokemon1.hp < 0){
 					pokemon1.isAlive = false;
