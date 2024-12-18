@@ -1,11 +1,16 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: Arial, sans-serif;
-    background-color: #53d3cf;
+    background-color: #53d3cf;  
+    background-image: url("Images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(15px);
 }
 
 .rectangle {
@@ -92,6 +97,10 @@ body {
     width: 30%;
 }
 
+#pseudoJoueur {
+    font-size: 3rem;
+}
+
 .Attacks {
     margin-top: 20px;
     display: flex;
@@ -100,7 +109,6 @@ body {
 
 .bouttonAttack {
     padding: 10px 20px;
-    font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -108,6 +116,11 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.2s;
     border: 2px solid wheat;
+}
+
+.nomAttack {
+    font-size: 1.3rem;
+    margin: 10%;
 }
 
 .typeAttack {
