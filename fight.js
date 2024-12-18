@@ -95,6 +95,8 @@ class Pokemon {
         	target.hp -= hp_lost;
         }
         
+        target.hp = Math.round(target.hp);
+        
         if(attack.has_special_effect){
         	//TODO
         } 
