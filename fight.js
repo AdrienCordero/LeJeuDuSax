@@ -80,12 +80,8 @@ class Pokemon {
     }
 
     attack(target, attackIndex) {
-    	console.log(this.name);
-    	console.log(this.attacks);
-    	console.log(attackIndex);
+
         const attack = this.attacks[attackIndex]; // Récupère l'attaque sélectionnée
-        
-        console.log(attack);
         
 
         let CM = typeEffectiveness[attack.type][target.type1];
@@ -95,12 +91,10 @@ class Pokemon {
         }
         if(attack.isPhysical == 1){
        		const hp_lost = (((this.level * 0.4 + 2)* this.atkPoint * attack.power) / (target.defPoint * 50) +2) * CM;
-       		console.log(hp_lost);
        		target.hp -= hp_lost;
         }
         if (attack.isSpecial){
         	const hp_lost = (((this.level * 0.4 + 2)* this.speAtkPoint * attack.power) / (target.speDefPoint * 50) +2) * CM;
-        	console.log(hp_lost);
         	target.hp -= hp_lost;
         }
         
@@ -163,14 +157,12 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		pokemon2 = pokemons2[switch2];
 		pokemons2[switch2] = reviens;
 	}
-	console.log(attack1, switch1, attack2, switch2);
+
 	if(attack1 != -1 && attack2 != -1){
 		
 		if(pokemon1.speedPoint === pokemon2.speedPoint){
-			console.log("speed egal");
 			let aleatoire = Math.random();
 			if(aleatoire < 0.5){
-				console.log(aleatoire)
 				pokemon1.attack(pokemon2, attack1);
 				if(pokemon2.hp < 0){
 					pokemon2.isAlive = false;
@@ -185,7 +177,6 @@ function apply_attack(attack1, switch1, attack2, switch2){
 				}
 			}
 			else{
-				console.log(aleatoire)
 				pokemon2.attack(pokemon1, attack2);
 				if(pokemon1.hp < 0){
 					pokemon1.isAlive = false;
@@ -266,10 +257,6 @@ function refreshButtons(i) {
     let pokemon = i == 1 ? pokemon1 : pokemon2;
     let pokemons = i == 1 ? pokemons1 : pokemons2;
     let user = i == 1 ? user1 : user2;
-    
-    if(i == 2){
-    	console.log('taille des attacks: ' + pokemon.attacks.length);
-    }
 
     document.getElementById("pseudoJoueur").textContent = "Au tour de " + user;
 
