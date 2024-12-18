@@ -227,7 +227,7 @@ function apply_attack(attack1, switch1, attack2, switch2){
 	else if(attack2 != -1){
 		pokemon2.attack(pokemon1, attack2);
 	}
-	//refresh()
+	
 }
 
 
