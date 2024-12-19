@@ -108,13 +108,13 @@ let params = new URLSearchParams(queryString);
 
 let user1 = params.get('user1');
 let user2 = params.get('user2');
-let pokemon1 = getPokemon(params.get('chr1'));
-let pokemon2 = getPokemon(params.get('chr4'));
-
-let pokemons1 = [getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
-let pokemons2 = [getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
+let pokemons1 = [getPokemon(params.get('chr1')), getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
+let pokemons2 = [getPokemon(params.get('chr4')), getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
+let pokemon1 = pokemons1[0];
+let pokemon2 = pokemons2[0];
 
 let player = 1;
+document.getElementById("newPokemon").style.display = "none";
 refresh();
 
 function getPokemon(name){
@@ -147,14 +147,10 @@ function getPokemon(name){
 function apply_attack(attack1, switch1, attack2, switch2){
 
 	if(switch1 != -1){
-		let reviens = pokemon1;
 		pokemon1 = pokemons1[switch1];
-		pokemons1[switch1] = reviens;
 	}
 	if (switch2 != -1){
-		let reviens = pokemon2;
 		pokemon2 = pokemons2[switch2];
-		pokemons2[switch2] = reviens;
 	}
     if(attack1 != -1 && attack2 != -1){
 		
@@ -164,13 +160,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 				pokemon1.attack(pokemon2, attack1);
 				if(pokemon2.hp < 0){
 					pokemon2.isAlive = false;
-					//chooseNewPokemon(2);
+					chooseNewPokemon(2);
 				}
 				else{
 					pokemon2.attack(pokemon1, attack2);
 					if(pokemon1.hp < 0 ){
 						pokemon1.isAlive = false
-						//chooseNewPokemon(1);
+						chooseNewPokemon(1);
 					}
 				}
 			}
@@ -178,13 +174,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 				pokemon2.attack(pokemon1, attack2);
 				if(pokemon1.hp < 0){
 					pokemon1.isAlive = false;
-					//chooseNewPokemon(1);
+					chooseNewPokemon(1);
 				}
 				else{
 					pokemon1.attack(pokemon2, attack1);
 					if(pokemon2.hp < 0){
 						pokemon2.isAlive = false;
-						//chooseNewPokemon(2);
+						chooseNewPokemon(2);
 					}
 				}
 			}
@@ -194,13 +190,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 			pokemon1.attack(pokemon2, attack1);
             if(pokemon2.hp < 0){
                 pokemon2.isAlive = false;
-                //chooseNewPokemon(2);
+                chooseNewPokemon(2);
             }
             else{
                 pokemon2.attack(pokemon1, attack2);
                 if(pokemon1.hp < 0 ){
                     pokemon1.isAlive = false;
-                    //chooseNewPokemon(1);
+                    chooseNewPokemon(1);
                 }
             }
 		}
@@ -208,13 +204,13 @@ function apply_attack(attack1, switch1, attack2, switch2){
 		    pokemon2.attack(pokemon1, attack2);
             if(pokemon1.hp < 0){
                 pokemon1.isAlive = false;
-                //chooseNewPokemon(1);
+                chooseNewPokemon(1);
             }
             else{
                 pokemon1.attack(pokemon2, attack1);
                 if(pokemon2.hp < 0){
                     pokemon2.isAlive = false;
-                    //chooseNewPokemon(2);
+                    chooseNewPokemon(2);
                 }
             }
 		}
@@ -237,39 +233,72 @@ let attack1 = -1;
 let attack2 = -1;
 let switch1 = -1;
 let switch2 = -1;
-
-function buttonPokemon(pokemons, indice) {
-    if (pokemons.length > indice) {
-        document.getElementById("imagePokemonAttack" + indice).src = "Images/" + pokemons[indice].name + ".png";
-        document.getElementById("nomChangerPokemon" + indice).textContent = pokemons[indice].name;
-    }
-    else
-        document.getElementById("changerPokemon" + indice).remove();
-}
+let playerNewPokemon = 0;   //  0 = aucun joueur ne doit choisir de nouveau pokemon
 
 function chooseNewPokemon(player){
-	console.log("chooseNewPokemon");
+    playerNewPokemon = player;
+    let pokemons = player == 1 ? pokemons1 : pokemons2;
+    let user = player == 1 ? user1 : user2;
+
+    document.getElementById("fight").style.display = "none";
+    document.getElementById("newPokemon").style.display = "";
+
+    document.getElementById("messageNewPokemon").innerText = user + ", vous devez choisir un nouveau pokemon";
+
+    for(let i=0; i < 3; i++) {
+        if (!pokemons[i].isAlive) {
+            document.getElementById("newPokemon" + i).style.display = "none";
+        }
+        else {
+            document.getElementById("newPokemon" + i).style.display = "";
+            document.getElementById("imageNewPokemon" + i).src = "Images/" + pokemons[i].name + ".png";
+            document.getElementById("nameNewPokemon" + i).innerText = pokemons[i].name;
+        }
+    }
+
 }
 
-function refreshButtons(i) {
-    let pokemon = i == 1 ? pokemon1 : pokemon2;
-    let pokemons = i == 1 ? pokemons1 : pokemons2;
-    let user = i == 1 ? user1 : user2;
+function pokemonChosen(i) {
+    if (playerNewPokemon == 1)
+        apply_attack(-1, i, -1, -1);
+    else if (playerNewPokemon == 2)
+        apply_attack(-1, -1, -1, i);
+    playerNewPokemon = 0;
+    document.getElementById("newPokemon").style.display = "none";
+    document.getElementById("fight").style.display = "";
+    refresh();
+}
+
+function buttonPokemon(pokemon, pokemons) {
+    for(let i=0; i < 3; i++) {
+        if (pokemons[i].isAlive && pokemon.name != pokemons[i].name) {
+            console.log("pokemon " + i + " : " + pokemons[i].name);
+            document.getElementById("changerPokemon" + i).style.display = "";
+            document.getElementById("imagePokemonAttack" + i).src = "Images/" + pokemons[i].name + ".png";
+            document.getElementById("nomChangerPokemon" + i).textContent = pokemons[i].name;
+        }
+        else
+            document.getElementById("changerPokemon" + i).style.display = "none";
+    }
+}
+
+function refreshButtons(p) {
+    let pokemon = p == 1 ? pokemon1 : pokemon2;
+    let pokemons = p == 1 ? pokemons1 : pokemons2;
+    let user = p == 1 ? user1 : user2;
 
     document.getElementById("pseudoJoueur").textContent = "Au tour de " + user;
 
     for (let j=0; j < pokemon.attacks.length; j++) {
     	document.getElementById("attack" + (j+1)).hidden = false;
-        document.getElementById("imageAttack" + (j + 1)).src = "Images/" + pokemon.attacks[j].type + ".png";//pokemon.attacks[j].type + ".png"
+        document.getElementById("imageAttack" + (j + 1)).src = "Images/" + pokemon.attacks[j].type + ".png";
         document.getElementById("nomAttack" + (j + 1)).textContent = pokemon.attacks[j].name;
     }
     for (let j=pokemon.attacks.length; j < 4; j++){
     	document.getElementById("attack" + (j+1)).hidden = true;
     }
-        
-
-    buttonPokemon(pokemons, 0);
-    buttonPokemon(pokemons, 1);
+    
+    buttonPokemon(pokemon, pokemons);
 }
 
 function refreshPokemonInfo(i) {
@@ -314,11 +343,11 @@ function attack(i) {
 
 function changePokemon(i) {
     if (player == 1) {
-        switch1 = i - 1;
+        switch1 = i;
         player = 2;
     }
     else {
-        switch2 = i - 1;
+        switch2 = i;
         player = 1;
         apply_attack(attack1, switch1, attack2, switch2);
         attack1 = -1;
@@ -328,66 +357,3 @@ function changePokemon(i) {
     }
     refresh();
 }
-
-/*function init() {
-    document.getElementById("nom1").textContent = pokemon1.name;
-    document.getElementById("nom2").textContent = pokemon2.name;
-    document.getElementById("imagePokemon1").src = "Images/" + pokemon1.name + ".png";
-    document.getElementById("imagePokemon2").src = "Images/" + pokemon2.name + ".png";
-    refreshButtons();
-}*/
-
-/*function refreshButtons() {
-    if (player == 1) {
-        document.getElementById("pseudoJoueur").textContent = "Au tour de " + user1;
-        if (pokemons1.length > 0) {
-            document.getElementById("imagePokemonAttaque0").src = "Images/" + pokemons1[0].name + ".png";
-            document.getElementById("nomChangerPokemon0").textContent = pokemons1[0].name;
-        }
-        else
-            document.getElementById("changerPokemon0").remove();
-        if (pokemons1.length > 1) {
-            document.getElementById("imagePokemonAttaque1").src = "Images/" + pokemons1[1].name + ".png";
-            document.getElementById("nomChangerPokemon1").textContent = pokemons1[1].name;
-        }
-        else
-            document.getElementById("changerPokemon1").remove();
-    }
-    if (player == 2) {
-        document.getElementById("pseudoJoueur").textContent = "Au tour de " + user2;
-        if (pokemons2.length > 0) {
-            document.getElementById("imagePokemonAttaque0").src = "Images/" + pokemons2[0].name + ".png";
-            document.getElementById("nomChangerPokemon0").textContent = pokemons2[0].name;
-        }
-        else
-            document.getElementById("changerPokemon0").remove();
-        if (pokemons2.length > 1) {
-            document.getElementById("imagePokemonAttaque1").src = "Images/" + pokemons2[1].name + ".png";
-            document.getElementById("nomChangerPokemon1").textContent = pokemons2[1].name;
-        }
-        else
-            document.getElementById("changerPokemon1").remove();
-    }
-}*/
-
-/*function changePokemon(i) {
-    if (player == 1 && pokemons1.length > i) {
-        pokemon1 = pokemons1[i];
-        pokemons1.splice(i, 1);
-        document.getElementById("nom1").textContent = pokemon1.name;
-        document.getElementById("imagePokemon1").src = "Images/" + pokemon1.name + ".png";
-        player = 2;
-    }
-    else if (player == 2 && pokemons2.length > i) {
-        pokemon2 = pokemons2[i];
-        pokemons2.splice(i, 1);
-        document.getElementById("nom2").textContent = pokemon2.name;
-        document.getElementById("imagePokemon2").src = "Images/" + pokemon2.name + ".png";
-        player = 1;
-    }
-    else if (player == 1)
-        alert(user1 + ", vous n'avez plus de pokemon");
-    else
-        alert(user2 + ", vous n'avez plus de pokemon");
-    refreshButtons();
-}*/
