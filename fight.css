@@ -105,6 +105,7 @@ body {
 }
 
 #pseudoJoueur {
+    color: white;
     font-size: 3rem;
 }
 
@@ -146,4 +147,9 @@ body {
 .imagePokemonAttack {
     width: 50%;
     margin-top: -50px;
+}
+
+#messageNewPokemon {
+    color: white;
+    font-size: 3rem;
 }
