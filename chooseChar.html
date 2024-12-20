@@ -9,7 +9,7 @@
         <p class="instructions">Each player choose 3 characters:</p>
         <div class="userContainer">
             <div class="userColumn">
-                <h2 class="instructions" id="nomUser1"></h2>
+                <h2 id="nomUser1"></h2>
                 <div class="characterButtons">
                     <button id="chr1" onmouseover="showImage('chr1')" onmouseout="hideImage('chr1')" onclick="selectCharacter('Bulbizarre', 'chr1', 1)">Bulbizarre</button>
                     <button id="chr2" onmouseover="showImage('chr2')" onmouseout="hideImage('chr2')" onclick="selectCharacter('Carapuce', 'chr2', 1)">Carapuce</button>
@@ -18,12 +18,14 @@
                     <button id="chr5" onmouseover="showImage('chr5')" onmouseout="hideImage('chr5')" onclick="selectCharacter('Ronflex', 'chr5', 1)">Ronflex</button>
                     <button id="chr6" onmouseover="showImage('chr6')" onmouseout="hideImage('chr6')" onclick="selectCharacter('Salamèche', 'chr6', 1)">Salamèche</button>
                 </div>
-                <h3 class="instructions">Selected Characters:</h3>
+                <h3>Selected Characters:</h3>
                 <ul id="user1SelectedCharacters" class="selectedCharacters"></ul>
+                <a class="backButton" href="Username.html">Back</a>
+                
             </div>
 
             <div class="userColumn">
-                <h2 class="instructions" id="nomUser2"></h2>
+                <h2 id="nomUser2"></h2>
                 <div class="characterButtons">
                     <button id="chr1" onmouseover="showImage('chr1')" onmouseout="hideImage('chr1')" onclick="selectCharacter('Bulbizarre', 'chr1', 2)">Bulbizarre</button>
                     <button id="chr2" onmouseover="showImage('chr2')" onmouseout="hideImage('chr2')" onclick="selectCharacter('Carapuce', 'chr2', 2)">Carapuce</button>
@@ -32,32 +34,33 @@
                     <button id="chr5" onmouseover="showImage('chr5')" onmouseout="hideImage('chr5')" onclick="selectCharacter('Ronflex', 'chr5', 2)">Ronflex</button>
                     <button id="chr6" onmouseover="showImage('chr6')" onmouseout="hideImage('chr6')" onclick="selectCharacter('Salamèche', 'chr6', 2)">Salamèche</button>
                 </div>
-                <h3 class="instructions">Selected Characters:</h3>
+                <h3>Selected Characters:</h3>
                 <ul id="user2SelectedCharacters" class="selectedCharacters"></ul>
+                <a class="attractiveButton" href="" id="lienStart">Start</a>
             </div>
         </div>
 
-        <a href="Username.html">Back</a>
-        <a href="" id="lienStart">Start</a>
-
         <div id="chr1Image" class="characterImage">
-            <img src="Images/bulbizarre.png" alt="Character 1">
+            <img src="Images/Bulbizarre.png" alt="Character 1">
         </div>
         <div id="chr2Image" class="characterImage">
-            <img src="Images/carapuce.png" alt="Character 2">
+            <img src="Images/Carapuce.png" alt="Character 2">
         </div>
         <div id="chr3Image" class="characterImage">
-            <img src="Images/evoli.png" alt="Character 3">
+            <img src="Images/Evoli.png" alt="Character 3">
         </div>
         <div id="chr4Image" class="characterImage">
-            <img src="Images/pikachu.png" alt="Character 4">
+            <img src="Images/Pikachu.png" alt="Character 4">
         </div>
         <div id="chr5Image" class="characterImage">
-            <img src="Images/ronflex.png" alt="Character 5">
+            <img src="Images/Ronflex.png" alt="Character 5">
         </div>
         <div id="chr6Image" class="characterImage">
-            <img src="Images/salamèche.png" alt="Character 6">
+            <img src="Images/Salamèche.png" alt="Character 6">
         </div>
     </body>
     <script type="text/javascript" src="chooseChar.js"></script>
+    <footer>
+        <p>developped by de formidables personnes avec un peu (bcp trop) de motivation</p>
+    </footer>
 </html>
