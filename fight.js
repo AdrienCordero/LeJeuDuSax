@@ -308,7 +308,7 @@ function refreshPokemonInfo(i) {
     //  Nom
     document.getElementById("nom" + i).textContent = pokemon.name;
     //  Image
-    document.getElementById("imagePokemon" + i).src = "Images/" + pokemon.name + ".png";
+    document.getElementById("imagePokemon" + i).src = "Images/" + pokemon.name + "Sax.png";
     //  Niveau
     document.getElementById("niveau" + i).textContent = "N. " + pokemon.level;
     //  PV
