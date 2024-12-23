@@ -123,6 +123,9 @@ function getPokemon(name){
 	if (name === "Carapuce"){
 		pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau, morsure, hydroqueue], 104, 104, 53, 70, 60, 62, 48);
 	}
+    if (name === "CarapuceSax"){
+		pokemon = new Pokemon("CarapuceSax", 50, "water", null, [pistolet_eau, morsure, hydroqueue], 104, 104, 53, 70, 60, 62, 48);
+	}
 	if (name === "Salamèche"){
 		pokemon = new Pokemon("Salamèche", 50, "fire", null, [lanceFlamme, griffe], 99,99, 62, 48, 65, 55, 63);
 	}
@@ -273,10 +276,12 @@ function pokemonChosen(i) {
 function buttonPokemon(pokemon, pokemons) {
     for(let i=0; i < 3; i++) {
         if (pokemons[i].isAlive && pokemon.name != pokemons[i].name) {
-            console.log("pokemon " + i + " : " + pokemons[i].name);
             document.getElementById("changerPokemon" + i).style.display = "";
             document.getElementById("imagePokemonAttack" + i).src = "Images/" + pokemons[i].name + ".png";
-            document.getElementById("nomChangerPokemon" + i).textContent = pokemons[i].name;
+            if (pokemons[i].name == "CarapuceSax")
+                document.getElementById("nomChangerPokemon" + i).textContent = "Carapuce";
+            else
+                document.getElementById("nomChangerPokemon" + i).textContent = pokemons[i].name;
         }
         else
             document.getElementById("changerPokemon" + i).style.display = "none";
@@ -302,14 +307,30 @@ function refreshButtons(p) {
     buttonPokemon(pokemon, pokemons);
 }
 
-function refreshPokemonInfo(i) {
+function refreshPokemonInfo(i, saxo) {
     let pokemon = i == 1 ? pokemon1 : pokemon2;
     let pokemons = i == 1 ? pokemons1 : pokemons2;
 
+    //  Saxophone
+    console.log(pokemon.name);
+    if (saxo) {
+        console.log("test");
+        imageSaxo = document.getElementById("imageSaxophone");
+        imageSaxo.style.display = "";
+        imageSaxo.style.top = Math.floor(Math.random() * window.innerHeight)+ "px";
+        imageSaxo.style.left = Math.floor(Math.random() * window.innerWidth)+ "px";
+        console.log("test2");
+    }
+    else
+        document.getElementById("imageSaxophone").style.display = "none";
+
     //  Nom
-    document.getElementById("nom" + i).textContent = pokemon.name;
+    if (pokemon.name == "CarapuceSax")
+        document.getElementById("nom" + i).textContent = "Carapuce";
+    else
+        document.getElementById("nom" + i).textContent = pokemon.name;
     //  Image
-    document.getElementById("imagePokemon" + i).src = "Images/" + pokemon.name + "Sax.png";
+    document.getElementById("imagePokemon" + i).src = "Images/" + pokemon.name + ".png";
     //  Niveau
     document.getElementById("niveau" + i).textContent = "N. " + pokemon.level;
     //  PV
@@ -320,8 +341,12 @@ function refreshPokemonInfo(i) {
 }
 
 function refresh() {
-    refreshPokemonInfo(1);
-    refreshPokemonInfo(2);
+    let saxo = false;
+    if ((pokemon1.name == "Carapuce" && player == 1) || 
+        (pokemon2.name == "Carapuce" && player == 2))
+        saxo = true;
+    refreshPokemonInfo(1, saxo);
+    refreshPokemonInfo(2, saxo);
     refreshButtons(player);
 }
 
@@ -355,6 +380,22 @@ function changePokemon(i) {
         attack2 = -1;
         switch1 = -1;
         switch2 = -1;
+    }
+    refresh();
+}
+
+function saxophone() {
+    if (player == 1) {
+        pokemon1 = getPokemon("CarapuceSax");
+        for (let i=0; i < 3; i++)
+            if (pokemons1[i].name == "Carapuce")
+                pokemons1[i] = pokemon1;
+    }
+    else {
+        pokemon2 = getPokemon("CarapuceSax");
+        for (let i=0; i < 3; i++)
+            if (pokemons2[i].name == "Carapuce")
+                pokemons2[i] = pokemon2;
     }
     refresh();
 }
