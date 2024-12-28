@@ -1,8 +1,12 @@
 body {
     background-image: url('Images/pokemonWallpaper.jpg');
+    background-size: cover;
 }
 
 .instructions {
+    margin-left: 50px;
+    margin-top: 100px;
+    font-size: medium;
     color: aliceblue;
     text-shadow: 2px 2px 5px black;
 }
@@ -21,6 +25,7 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: #333;
+    opacity: 90%;
     color: white;
     padding: 10px;
     text-align: right;
@@ -31,12 +36,18 @@ footer {
 .userContainer {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .userColumn {
-    display: block;
+    color: aliceblue;
+    text-shadow: black;
     width: 45%;
+    font-size: x-large;
+    font-weight: 1000;
+}
+
+.removeButton {
+    margin-left: 5%;
 }
 
 .userColumn h2 {
@@ -46,6 +57,7 @@ footer {
 }
 
 .userColumn h3 {
+    margin-left: 5%;
     color: aliceblue;
     text-shadow: 2px 2px 5px black;
 }
@@ -67,6 +79,8 @@ footer {
     text-shadow: 2px 2px 5px darkblue;
     border: none;
     border-radius: 50px;
+    border-style: ridge;
+    border-color: rgb(43, 76, 138);
 }
 
 .characterButtons button:hover {
@@ -79,39 +93,53 @@ a {
 }
 
 .backButton {
+    position: fixed;
+    top: 10%;
+    left: 5%;
     display: flex;
-    padding: 20px;
-    width: 120px;
-    font-size: 16px;
     justify-content: center;
+    padding: 20px;
+    width: 100px;
+    font-size: 16px;
     color: white;
     text-shadow: 2px 2px 5px darkgreen;
     background-color: green;
-    border-radius: 50px;
+    border-radius: 70px;
+    border-style: solid;
+    border-color: rgb(0, 77, 0);
 }
 
 .backButton:hover {
     background-color: darkgreen;
-    color: white;
+    color: greenyellow;
 }
 
 .attractiveButton {
+    position: fixed;
+    top: 10%;
+    right: 5%;
     display: flex;
-    padding: 20px;
-    width: 120px;
-    font-size: 50px;
+    padding: 30px;
+    width: 200px;
+    font-size: 35px;
     justify-content: center;
     color: white;
     text-shadow: 2px 2px 5px darkred;
     background-color: red;
-    border-radius: 50px;
+    border-style: solid;
+    border-color: darkred;
+    border-radius: 70px;
 }
 
 .attractiveButton:hover {
     background-color: yellow;
-    color: black;
+    color: darkred;
 }
 
 .characterImage {
+    position: absolute;
+    bottom: 30%;
+    left: 43%;
     display: none;
+    text-align: center;
 }

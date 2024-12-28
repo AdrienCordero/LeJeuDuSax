@@ -2,11 +2,13 @@
 <html>
     <head>
         <link rel = "stylesheet", href="chooseChar.css">
-        <title>Web Programming Project</title>
+        <title>Projet Programmation Web</title>
     </head>
     <body>
-        <h1>Choose Your Characters</h1>
-        <p class="instructions">Each player choose 3 characters:</p>
+        <a class="backButton" href="index.html">Retour</a>
+        <a class="attractiveButton" href="" id="lienStart">Commencer</a>
+        <h1>Choisissez vos personnages</h1>
+        <p class="instructions">Chaque joueur choisit 3 pokémons</p>
         <div class="userContainer">
             <div class="userColumn">
                 <h2 id="nomUser1"></h2>
@@ -18,10 +20,8 @@
                     <button id="chr5" onmouseover="showImage('chr5')" onmouseout="hideImage('chr5')" onclick="selectCharacter('Ronflex', 'chr5', 1)">Ronflex</button>
                     <button id="chr6" onmouseover="showImage('chr6')" onmouseout="hideImage('chr6')" onclick="selectCharacter('Salamèche', 'chr6', 1)">Salamèche</button>
                 </div>
-                <h3>Selected Characters:</h3>
+                <h3>Personnages choisis:</h3>
                 <ul id="user1SelectedCharacters" class="selectedCharacters"></ul>
-                <a class="backButton" href="Username.html">Back</a>
-                
             </div>
 
             <div class="userColumn">
@@ -34,9 +34,8 @@
                     <button id="chr5" onmouseover="showImage('chr5')" onmouseout="hideImage('chr5')" onclick="selectCharacter('Ronflex', 'chr5', 2)">Ronflex</button>
                     <button id="chr6" onmouseover="showImage('chr6')" onmouseout="hideImage('chr6')" onclick="selectCharacter('Salamèche', 'chr6', 2)">Salamèche</button>
                 </div>
-                <h3>Selected Characters:</h3>
+                <h3>Personnages choisis:</h3>
                 <ul id="user2SelectedCharacters" class="selectedCharacters"></ul>
-                <a class="attractiveButton" href="" id="lienStart">Start</a>
             </div>
         </div>
 
@@ -58,9 +57,22 @@
         <div id="chr6Image" class="characterImage">
             <img src="Images/Salamèche.png" alt="Character 6">
         </div>
+
+        <audio id="bgMusic" autoplay loop>
+            <source src="Audio/chooseCharMusic.m4a">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="startSound">
+            <source src="Audio/startSound.m4a">
+        </audio>
+        <audio id="characterSound" preload="auto">
+            <source src="Audio/characterSound.m4a">
+        </audio>
+
     </body>
     <script type="text/javascript" src="chooseChar.js"></script>
     <footer>
-        <p>developped by de formidables personnes avec un peu (bcp trop) de motivation</p>
+        <p>Developped by de formidables personnes avec un peu (beaucoup trop) de motivation</p>
+        <p>Cordero Adrien, Guillien Corentin, Moussaid Amine, Nouiga Iness</p>
     </footer>
 </html>
