@@ -314,12 +314,10 @@ function refreshPokemonInfo(i, saxo) {
     //  Saxophone
     console.log(pokemon.name);
     if (saxo) {
-        console.log("test");
         imageSaxo = document.getElementById("imageSaxophone");
         imageSaxo.style.display = "";
         imageSaxo.style.top = Math.floor(Math.random() * window.innerHeight)+ "px";
         imageSaxo.style.left = Math.floor(Math.random() * window.innerWidth)+ "px";
-        console.log("test2");
     }
     else
         document.getElementById("imageSaxophone").style.display = "none";
