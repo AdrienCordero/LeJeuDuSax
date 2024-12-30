@@ -50,6 +50,16 @@ const belier = new Attack("belier", "normal", 1, 0, 90, 0);
 const fouetLiane = new Attack("fouet liane", "grass", 1, 0, 45, 0);
 const canonGraine = new Attack("canon graine", "grass", 1, 0, 80, 0);
 const hydroqueue = new Attack("hydroqueue", "water", 1, 0, 90, 0);
+const tourRapide = new Attack("tour rapide", 'normal', 1, 0, 50, 0);
+const casseBrique = new Attack("casse brique", "fighting", 1, 0, 75, 0);
+const griffeAcier = new Attack("griffe acier", "steel", 1, 0, 50, 0);
+const tunnel = new Attack("tunnel instantané", "ground", 1, 0, 80, 0); 
+const ballOmbre = new Attack("ball'ombre", "ghost", 0, 1, 80, 0);
+const larcin = new Attack("larcin", "dark", 1, 0, 60, 0);
+const sabotage = new Attack("sabotage", "dark", 1, 0, 65, 0);
+const laserGlace = new Attack("laser glace", "ice", 0, 1, 90, 0);
+const pointFeu = new Attack("point feu", "fire", 1, 0, 75, 0);
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +74,7 @@ class Pokemon {
     
     
     //constructor(name, level, type1, type2, hpMax, hp, atkPoint, attacks, defPoint, speAtkPoint, speDefPoint, speedPoint) {    //  Erreur dans l'ordre des arguments
-    constructor(name, level, type1, type2, attacks, hpMax, hp, atkPoint, defPoint, speAtkPoint, speDefPoint, speedPoint) {
+    constructor(name, level, type1, type2, attacks, hpMax, hp, atkPoint, defPoint, speAtkPoint, speDefPoint, speedPoint){
         this.name = name;         
         this.type1 = type1;         
         this.type2 = type2;
@@ -121,25 +131,25 @@ refresh();
 function getPokemon(name){
 	let pokemon = null;
 	if (name === "Carapuce"){
-		pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau, morsure, hydroqueue], 104, 104, 53, 70, 60, 62, 48);
+		pokemon = new Pokemon("Carapuce", 50, "water", null, [pistolet_eau, morsure, hydroqueue, tourRapide], 104, 104, 53, 70, 60, 62, 48);
 	}
     if (name === "CarapuceSax"){
-		pokemon = new Pokemon("CarapuceSax", 50, "water", null, [pistolet_eau, morsure, hydroqueue], 104, 104, 53, 70, 60, 62, 48);
+		pokemon = new Pokemon("CarapuceSax", 50, "water", null, [pistolet_eau, morsure, hydroqueue,tourRapide], 104, 104, 100, 100, 100, 100, 100);
 	}
 	if (name === "Salamèche"){
-		pokemon = new Pokemon("Salamèche", 50, "fire", null, [lanceFlamme, griffe], 99,99, 62, 48, 65, 55, 63);
+		pokemon = new Pokemon("Salamèche", 50, "fire", null, [lanceFlamme, griffe, casseBrique, griffeAcier], 99,99, 62, 48, 65, 55, 63);
 	}
 	if (name === "Pikachu"){
-		pokemon = new Pokemon("Pikachu", 50, "electric", null, [tonnerre, viveAttack, queueFer], 95, 95, 60, 45, 60, 49, 95);
+		pokemon = new Pokemon("Pikachu", 50, "electric", null, [tonnerre, viveAttack, queueFer, larcin, sabotage], 95, 95, 60, 45, 60, 49, 95);
 	}
 	if (name == "Bulbizarre"){
-		pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [belier, canonGraine, fouetLiane], 105, 105, 54, 54, 70, 70, 50);
+		pokemon = new Pokemon("Bulbizarre", 50, "grass", null, [belier, canonGraine, fouetLiane, sabotage], 105, 105, 54, 54, 70, 70, 50);
 	}
 	if (name === "Evoli"){
-		pokemon = new Pokemon("Evoli", 50, "normal", null, [viveAttack, morsure, meteor], 115, 115, 60, 49, 50, 77, 60);
+		pokemon = new Pokemon("Evoli", 50, "normal", null, [ballOmbre, morsure, belier, tunnel], 115, 115, 60, 49, 50, 77, 60);
 	}
 	if (name === "Ronflex"){
-		pokemon = new Pokemon("Ronflex", 50, "normal", null, [lechouille, machouille], 220, 220, 115, 70, 70, 115, 35);
+		pokemon = new Pokemon("Ronflex", 50, "normal", null, [lechouille, morsure, laserGlace, pointFeu], 160, 160, 110, 65, 65, 110, 30);
 	}
 
 	return pokemon
@@ -190,33 +200,33 @@ function apply_attack(attack1, switch1, attack2, switch2){
 			}
 		}
 		
-		else if(pokemon1.speed > pokemon2.speed){
-			pokemon1.attack(pokemon2, attack1);
-            if(pokemon2.hp < 0){
-                pokemon2.isAlive = false;
-                chooseNewPokemon(2);
-            }
-            else{
-                pokemon2.attack(pokemon1, attack2);
-                if(pokemon1.hp < 0 ){
-                    pokemon1.isAlive = false;
-                    chooseNewPokemon(1);
-                }
-            }
+		else if(pokemon1.speedPoint > pokemon2.speedPoint){
+		    pokemon1.attack(pokemon2, attack1);
+		    if(pokemon2.hp < 0){
+		        pokemon2.isAlive = false;
+		        chooseNewPokemon(2);
+		    }
+		    else{
+		        pokemon2.attack(pokemon1, attack2);
+		        if(pokemon1.hp < 0 ){
+		            pokemon1.isAlive = false;
+		            chooseNewPokemon(1);
+		        }
+           	   }
 		}
 		else{
 		    pokemon2.attack(pokemon1, attack2);
-            if(pokemon1.hp < 0){
-                pokemon1.isAlive = false;
-                chooseNewPokemon(1);
-            }
-            else{
-                pokemon1.attack(pokemon2, attack1);
-                if(pokemon2.hp < 0){
-                    pokemon2.isAlive = false;
-                    chooseNewPokemon(2);
-                }
-            }
+                    if(pokemon1.hp < 0){
+                        pokemon1.isAlive = false;
+                        chooseNewPokemon(1);
+                    }
+		    else{
+		        pokemon1.attack(pokemon2, attack1);
+		        if(pokemon2.hp < 0){
+		            pokemon2.isAlive = false;
+		            chooseNewPokemon(2);
+		        }
+		    }
 		}
 	}
 	else if(attack1 != -1){
@@ -312,7 +322,6 @@ function refreshPokemonInfo(i, saxo) {
     let pokemons = i == 1 ? pokemons1 : pokemons2;
 
     //  Saxophone
-    console.log(pokemon.name);
     if (saxo) {
         imageSaxo = document.getElementById("imageSaxophone");
         imageSaxo.style.display = "";
