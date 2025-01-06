@@ -1,3 +1,5 @@
+// Le dictionnaire typeEffectiveness sert à appliquer le bon coefficient multiplicateur en fonction du type en cas d'attaque "super efficace" ou "peu efficace". 
+
 const typeEffectiveness = {
     "normal":  { "normal": 1, "fire": 1, "water": 1, "electric": 1, "grass": 1, "ice": 1, "fighting": 1, "poison": 1, "ground": 1, "flying": 1, "psychic": 1, "bug": 1, "rock": 1, "ghost": 0, "dragon": 1, "dark": 1, "steel": 0.5, "fairy": 1 },
     "fire":    { "normal": 1, "fire": 0.5, "water": 0.5, "electric": 1, "grass": 2, "ice": 2, "fighting": 1, "poison": 1, "ground": 1, "flying": 1, "psychic": 1, "bug": 2, "rock": 0.5, "ghost": 1, "dragon": 0.5, "dark": 1, "steel": 2, "fairy": 1 },
@@ -26,16 +28,22 @@ let supersax = false;
 ////////////////////    ATTACK     /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
+/* Class Attack
+ * Cette classe permet de créer les attaques que les pokemons utiliseront dans le jeu. 
+ * isPhysical et isSpecial indique si c'est une attaque de type physique ou special
+*/
+
 class Attack {
-	constructor(name, type, isPhysical, isSpecial, power, hasSpecialEffect) {
+	constructor(name, type, isPhysical, isSpecial, power) {
 		this.name = name;             
-		this.type = type;             
-		this.isPhysical = isPhysical; // Booléen indiquant si c'est une attaque physique
-		this.isSpecial = isSpecial; //Booléen indiquant 
-		this.hasSpecialEffect = hasSpecialEffect;
+		this.type = type; 
+		this.isPhysical = isPhysical; 
+		this.isSpecial = isSpecial; 
 		this.power = power;
 	} 
 }
+
+// On crée les attaques qui pourront être mise aux pokemons
 
 
 const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
@@ -68,6 +76,10 @@ const pointFeu = new Attack("point feu", "fire", 1, 0, 75, 0);
 ////////////////////    POKEMON     ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
+/* Class Pokemon qui sert stocker les informations sur les pokemons qui combattent 
+ * Dans pokemon il y a deux types d'attaque: les attaques physiques et les attaques spécial, ont a donc besoin de type type de point d'attaque et de deux types de point de défense.
+*/
+
 class Pokemon {
  
     
@@ -83,13 +95,13 @@ class Pokemon {
         this.speedPoint = speedPoint; 
         this.hpMax = hpMax;
         this.hp = hp;
-        this.attacks = attacks;   // Tableau des attaques
+        this.attacks = attacks;   // Tableau des attaques du pokemon, ces éléments sont de la class Attack ci-après
         this.isAlive = true;
     }
 
     attack(target, attackIndex) {
         const attack = this.attacks[attackIndex]; // Récupère l'attaque sélectionnée
-        let CM = typeEffectiveness[attack.type][target.type1];
+        let CM = typeEffectiveness[attack.type][target.type1]; // Coefficient multiplicatif qui sert à calculer les dégats infligés au pokemon qui reçoit l'attaque. 
         
         if(target.type2){
         	CM *= typeEffectiveness[attack.type][target.type2];
@@ -103,19 +115,20 @@ class Pokemon {
         	target.hp -= hp_lost;
         }
         
-        target.hp = Math.round(target.hp);
-        
-        if(attack.has_special_effect){
-        	//TODO
-        } 
+        target.hp = Math.round(target.hp); //On arrondit pour afficher des entiers à l'utilisateur. 
+
     }
 }
+
+//On récupère les pokémons choisi dans la page précédentes
 
 let queryString = window.location.search;
 let params = new URLSearchParams(queryString);
 
 let user1 = params.get('user1');
 let user2 = params.get('user2');
+
+//On créé les instances des objets des pokemons choisis à l'aide de la fonction getPokemon.
 let pokemons1 = [getPokemon(params.get('chr1')), getPokemon(params.get('chr2')), getPokemon(params.get('chr3'))];
 let pokemons2 = [getPokemon(params.get('chr4')), getPokemon(params.get('chr5')), getPokemon(params.get('chr6'))];
 let pokemon1 = pokemons1[0];
@@ -125,6 +138,8 @@ let player = 1;
 document.getElementById("newPokemon").style.display = "none";
 refresh();
 
+
+// Crée les instances des pokemons avec les bonnes statistiques.
 function getPokemon(name){
 	let pokemon = null;
 	if (name === "Carapuce"){
@@ -154,7 +169,7 @@ function getPokemon(name){
 }
 
 
-
+// Fonction qui gère les évènements du jeu une fois que chaque joueur a choisi son action, ou lorsqu'un pokemon meurt. 
 function apply_attack(attack1, switch1, attack2, switch2){
 
 	if(switch1 != -1){
