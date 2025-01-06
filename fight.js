@@ -37,6 +37,7 @@ class Attack {
 	} 
 }
 
+
 const pistolet_eau = new Attack("pistolet à eau", "water", 0 , 1, 40, 0);
 const morsure = new Attack("morsure", "dark", 1, 0, 60, 0);
 const lanceFlamme = new Attack("lance Flamme", "fire", 0, 1, 90, 0);
@@ -388,6 +389,15 @@ function changePokemon(i) {
 }
 
 function saxophone() {
+
+    const audioSax = document.getElementById('saxoMusic');
+    audioSax.play();
+    
+    audioSax.addEventListener('ended', () => {
+    const audio = document.getElementById('fightMusic');
+    audio.play();
+});
+
     if (player == 1) {
         pokemon1 = getPokemon("CarapuceSax");
         for (let i=0; i < 3; i++)
