@@ -68,13 +68,8 @@ const pointFeu = new Attack("point feu", "fire", 1, 0, 75, 0);
 ////////////////////////////////////////////////////////////////////////////////////////
 
 class Pokemon {
-
-    //FAIRE LES IVS (pour randomiser les stats)
+ 
     
-    
-    
-    
-    //constructor(name, level, type1, type2, hpMax, hp, atkPoint, attacks, defPoint, speAtkPoint, speDefPoint, speedPoint) {    //  Erreur dans l'ordre des arguments
     constructor(name, level, type1, type2, attacks, hpMax, hp, atkPoint, defPoint, speAtkPoint, speDefPoint, speedPoint){
         this.name = name;         
         this.type1 = type1;         
