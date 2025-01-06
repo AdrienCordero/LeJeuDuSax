@@ -244,12 +244,18 @@ function apply_attack(attack1, switch1, attack2, switch2){
 ////////////////////    INTERFACE     ////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-let attack1 = -1;
-let attack2 = -1;
-let switch1 = -1;
-let switch2 = -1;
-let playerNewPokemon = 0;   //  0 = aucun joueur ne doit choisir de nouveau pokemon
+//  Variables globales qui permettent d'enregistrer les actions des joueurs entre les tours
+let attack1 = -1;   //  Le joueur 1 a attaque, l'indice de l'attaque est enregistre (-1 si il n'a pas attaque)
+let attack2 = -1;   //  Le joueur 2 a attaque, l'indice de l'attaque est enregistre (-1 si il n'a pas attaque)
+let switch1 = -1;   //  Le joueur 1 a cahnge de pokemon, l'indice du pokemon est enregistre (-1 si il n'a pas change)
+let switch2 = -1;   //  Le joueur 2 a change de pokemon, l'indice du pokemon est enregistre (-1 si il n'a pas change)
 
+let playerNewPokemon = 0;   // vaut le numero du joueur lorsque celui ci perd son pokemon actif. Il doit en choisir un nouveau (0 = aucun joueur ne doit choisir de nouveau pokemon)
+
+/*
+    Permet de choisir un nouveau pokemon lorsque le pokemon actif meurt.
+    Le parametre player correspond au numero du joueur qui doit choisir un nouveau pokemon.
+*/
 function chooseNewPokemon(player){
     playerNewPokemon = player;
     let pokemons = player == 1 ? pokemons1 : pokemons2;
@@ -273,6 +279,10 @@ function chooseNewPokemon(player){
 
 }
 
+/*
+    Est appele lorsque le joueur qui a perdu un pokemon en a choisit un nouveau.
+    Le parametre i correspond a l'indice du nouveau pokemon dans le tableau des pokemons du joueur.
+*/
 function pokemonChosen(i) {
     if (playerNewPokemon == 1)
         apply_attack(-1, i, -1, -1);
@@ -284,6 +294,10 @@ function pokemonChosen(i) {
     refresh();
 }
 
+/*
+    Permet de mettre a jour les boutons pour changer de pokemons lorsque le pokemon actif n'est pas mort
+    Les variable pokemon et pokemons contiennent le pokemon actif et le tableau des pokemons du joueur
+*/
 function buttonPokemon(pokemon, pokemons) {
     for(let i=0; i < 3; i++) {
         if (pokemons[i].isAlive && pokemon.name != pokemons[i].name) {
@@ -299,6 +313,10 @@ function buttonPokemon(pokemon, pokemons) {
     }
 }
 
+/*
+    Permet de mettre a jour les boutons des attaques du pokemon actif et appelle la fonction buttonPokemons
+    Le parametre p correspond au numero du joueur actuel.
+*/
 function refreshButtons(p) {
     let pokemon = p == 1 ? pokemon1 : pokemon2;
     let pokemons = p == 1 ? pokemons1 : pokemons2;
@@ -318,6 +336,10 @@ function refreshButtons(p) {
     buttonPokemon(pokemon, pokemons);
 }
 
+/*
+    Permet de mettre a jour les informations du pokemon actif
+    Le parametre i correspond au joueur, saxo est un booleen qui indique si le saxophone de carapuce doit etre affiche
+*/
 function refreshPokemonInfo(i, saxo) {
     let pokemon = i == 1 ? pokemon1 : pokemon2;
     let pokemons = i == 1 ? pokemons1 : pokemons2;
@@ -348,8 +370,11 @@ function refreshPokemonInfo(i, saxo) {
     pv.style.width = pourcentage * 100 + "%";
 }
 
+/*
+    Permet de mettre a jour toutes les informations a l'ecran
+*/
 function refresh() {
-    let saxo = false;
+    let saxo = false;   //  Vaut true si le saxophone doit etre affiche a l'ecran, false sinon
     if ((pokemon1.name == "Carapuce" && player == 1) || 
         (pokemon2.name == "Carapuce" && player == 2))
         saxo = true;
@@ -358,6 +383,10 @@ function refresh() {
     refreshButtons(player);
 }
 
+/*
+    Est appele lorsque le joueur a selectionne une attaque pour son tour
+    Le parametre i correspond a l'indice de l'attaque dans le tableau des attaques du pokemon
+*/
 function attack(i) {
     if (player == 1) {
         attack1 = i - 1;
@@ -375,6 +404,10 @@ function attack(i) {
     refresh();
 }
 
+/*
+    Est appele lorsque le joueur a change de pokemon pour son tour
+    Le parametre i correspond a l'indice du nouveau pokemon dans le tableau
+*/
 function changePokemon(i) {
     if (player == 1) {
         switch1 = i;
@@ -392,6 +425,9 @@ function changePokemon(i) {
     refresh();
 }
 
+/*
+    Est appele lorsque le saxophone est appuye, carapuce doit se transformer en CarapuceSax
+*/
 function saxophone() {
     if (player == 1) {
         pokemon1 = getPokemon("CarapuceSax");
