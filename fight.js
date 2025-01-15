@@ -264,6 +264,19 @@ let switch2 = -1;   //  Le joueur 2 a change de pokemon, l'indice du pokemon est
 let playerNewPokemon = 0;   // vaut le numero du joueur lorsque celui ci perd son pokemon actif. Il doit en choisir un nouveau (0 = aucun joueur ne doit choisir de nouveau pokemon)
 
 /*
+    Est appelee lorsque le joueur a perdu tous ses pokemons
+*/
+function end(winner) {
+    document.getElementById("fight").style.display = "none";
+    document.getElementById("newPokemon").style.display = "none";
+    document.getElementById("end").style.display = "";
+
+    document.getElementById("messageEnd").innerText = winner + ", vous avez gagné !";
+
+    saxophone();
+}
+
+/*
     Permet de choisir un nouveau pokemon lorsque le pokemon actif meurt.
     Le parametre player correspond au numero du joueur qui doit choisir un nouveau pokemon.
 */
@@ -272,8 +285,16 @@ function chooseNewPokemon(player){
     let pokemons = player == 1 ? pokemons1 : pokemons2;
     let user = player == 1 ? user1 : user2;
 
+    if (!pokemons[0].isAlive &&
+        !pokemons[1].isAlive &&
+        !pokemons[2].isAlive) {
+        end(user);
+        return;
+    }
+
     document.getElementById("fight").style.display = "none";
     document.getElementById("newPokemon").style.display = "";
+    document.getElementById("end").style.display = "none";
 
     document.getElementById("messageNewPokemon").innerText = user + ", vous devez choisir un nouveau pokemon";
 
@@ -302,6 +323,7 @@ function pokemonChosen(i) {
     playerNewPokemon = 0;
     document.getElementById("newPokemon").style.display = "none";
     document.getElementById("fight").style.display = "";
+    document.getElementById("end").style.display = "none";
     refresh();
 }
 
@@ -445,9 +467,9 @@ function saxophone() {
     audioSax.play();
     
     audioSax.addEventListener('ended', () => {
-    const audio = document.getElementById('fightMusic');
-    audio.play();
-});
+        const audio = document.getElementById('fightMusic');
+        audio.play();
+    });
 
     if (player == 1) {
         pokemon1 = getPokemon("CarapuceSax");
